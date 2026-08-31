@@ -61,6 +61,7 @@ pub mod oauth_device_flow;
 pub mod ollama {
     pub use goose_providers::ollama::*;
 }
+pub mod llmman_def;
 pub mod ollama_cloud;
 pub mod ollama_def;
 pub mod openai {

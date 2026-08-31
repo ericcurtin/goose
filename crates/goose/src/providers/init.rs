@@ -43,6 +43,7 @@ use crate::providers::base::ProviderType;
 use crate::providers::databricks_def::{self, DatabricksProviderDef};
 use crate::providers::databricks_v2_def::{self, DatabricksV2ProviderDef};
 use crate::providers::google_def::GoogleProviderDef;
+use crate::providers::llmman_def::LlmmanProviderDef;
 use crate::providers::ollama_def::OllamaProviderDef;
 use crate::providers::openai_def::OpenAiProviderDef;
 use crate::{
@@ -149,6 +150,10 @@ async fn init_registry() -> RwLock<ProviderRegistry> {
         );
         registry
             .register_with_inventory::<NanoGptProvider>(true, Some(registrations::refresh_only()));
+        registry.register_with_inventory::<LlmmanProviderDef>(
+            true,
+            Some(registrations::ollama_inventory()),
+        );
         registry.register_with_inventory::<OllamaProviderDef>(
             true,
             Some(registrations::ollama_inventory()),
